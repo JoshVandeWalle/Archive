@@ -1,6 +1,8 @@
 package com.ogbc.archive.api;
 
 import com.ogbc.archive.api.dto.RestDto;
+import com.ogbc.archive.api.validator.Letters;
+import com.ogbc.archive.api.validator.LettersAndSpaces;
 import com.ogbc.archive.model.ContentModel;
 import com.ogbc.archive.model.TopicModel;
 import com.ogbc.archive.model.PassageModel;
@@ -8,6 +10,7 @@ import com.ogbc.archive.service.ContentBusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,13 +18,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/content")
 @CrossOrigin(maxAge = 3600)
+@Validated
 public class ContentRestService
 {
     @Autowired
     ContentBusinessService service;
 
     @GetMapping("/topic/{topic}")
-    public ResponseEntity<RestDto> handleGetByTopic(@PathVariable("topic") String topic)
+    public ResponseEntity<RestDto> handleGetByTopic(@PathVariable("topic") @LettersAndSpaces String topic)
     {
         List<ContentModel> content = service.retrieveByTopic(new TopicModel(topic));
 
@@ -31,7 +35,7 @@ public class ContentRestService
     }
 
     @GetMapping("/passage")
-    public ResponseEntity<RestDto> handleGetByPassage(@RequestParam("book") String book, @RequestParam("chapter") Integer chapter, @RequestParam(value = "verse", required = false) Integer verse)
+    public ResponseEntity<RestDto> handleGetByPassage(@RequestParam("book") @Letters String book, @RequestParam("chapter") Integer chapter, @RequestParam(value = "verse", required = false) Integer verse)
     {
         PassageModel passage = new PassageModel(book, chapter, verse);
 

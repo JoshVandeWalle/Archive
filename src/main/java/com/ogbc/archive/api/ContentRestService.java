@@ -1,7 +1,7 @@
 package com.ogbc.archive.api;
 
 import com.ogbc.archive.api.dto.RestDto;
-import com.ogbc.archive.api.validator.Letters;
+import com.ogbc.archive.api.validator.AlphaNumAndSpaces;
 import com.ogbc.archive.api.validator.LettersAndSpaces;
 import com.ogbc.archive.model.ContentModel;
 import com.ogbc.archive.model.TopicModel;
@@ -35,7 +35,7 @@ public class ContentRestService
     }
 
     @GetMapping("/passage")
-    public ResponseEntity<RestDto> handleGetByPassage(@RequestParam("book") @Letters String book, @RequestParam("chapter") Integer chapter, @RequestParam(value = "verse", required = false) Integer verse)
+    public ResponseEntity<RestDto> handleGetByPassage(@RequestParam("book") @AlphaNumAndSpaces String book, @RequestParam("chapter") Integer chapter, @RequestParam(value = "verse", required = false) Integer verse)
     {
         PassageModel passage = new PassageModel(book, chapter, verse);
 

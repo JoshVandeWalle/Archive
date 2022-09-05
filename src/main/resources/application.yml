@@ -28,3 +28,5 @@ spring:
   profiles: prod
   datasource:
     url: jdbc:mysql://cst323activity.cz6nq4gs34ua.us-west-1.rds.amazonaws.com:3306/ARCHIVE
+server:
+  port: 80

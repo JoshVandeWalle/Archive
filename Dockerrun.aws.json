@@ -1,0 +1,13 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "joshv3742/sermon-archive:0.0.3",
+    "Update": "true"
+  },
+
+  "Ports": [
+    {
+      "ContainerPort": "80"
+    }
+  ]
+}

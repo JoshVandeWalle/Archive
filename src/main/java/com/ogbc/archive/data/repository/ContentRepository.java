@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ContentRepository extends JpaRepository<ContentEntity, Long>
 {
-    @Query(value="SELECT DISTINCT CONTENT.* FROM CONTENT JOIN CONTENT_TOPIC ON CONTENT.id = CONTENT_TOPIC.content_id JOIN TOPIC ON CONTENT_TOPIC.topic_id = TOPIC.id where TOPIC.topic LIKE %:name% ORDER BY CONTENT.`date`;", nativeQuery = true)
+    @Query(value="SELECT DISTINCT CONTENT.* FROM CONTENT JOIN CONTENT_TOPIC ON CONTENT.id = CONTENT_TOPIC.content_id JOIN TOPIC ON CONTENT_TOPIC.topic_id = TOPIC.id where TOPIC.topic LIKE CONCAT('%', :name, '%');", nativeQuery = true)
     List<ContentEntity> findByTopic(String name);
     @Query(value= """
             SELECT * from CONTENT WHERE passage LIKE CONCAT('%', :book, '%') AND
@@ -34,6 +34,6 @@ public interface ContentRepository extends JpaRepository<ContentEntity, Long>
             LENGTH(passage) - LENGTH(REPLACE(passage, ':', '')) = 2 AND SUBSTRING_INDEX(SUBSTRING_INDEX(passage, ':', 2), '-', -1) = :chapter AND
             \tSUBSTRING_INDEX(passage, ':', -1) >= :verse)""", nativeQuery = true)
     List<ContentEntity> findByVerse(@Param("book") String book, @Param("chapter") String chapter,  @Param("verse") String verse);
-    @Query(value = "SELECT * FROM CONTENT ORDER BY date LIMIT 10", nativeQuery = true)
+    @Query(value = "SELECT * FROM CONTENT ORDER BY `date` DESC LIMIT 10", nativeQuery = true)
     List<ContentEntity> findRecent();
 }

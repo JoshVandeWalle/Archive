@@ -5,6 +5,7 @@ import com.ogbc.archive.data.entity.TopicEntity;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class TopicModel
 
     @NotBlank
     @NonNull
+    @Size(max = 128)
     String name;
 
     private List<ContentModel> content;

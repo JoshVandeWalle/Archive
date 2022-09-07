@@ -6,7 +6,7 @@ import lombok.*;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,22 +24,28 @@ public class ContentModel
 
     @NonNull
     @NotBlank
+    @Size(max = 64)
     private String passage;
 
     @NonNull
     @NotBlank
+    @Size(max = 128)
     private String title;
 
     @NonNull
+    @Size(max = 256)
     private String speaker;
 
     @NonNull
+    @Size(max = 256)
     private String venue;
 
+    @Size(max = 10000)
     private String notes;
 
     @NonNull
     @URL
+    @Size(max = 512)
     private String link;
 
     List<TopicModel> topics;

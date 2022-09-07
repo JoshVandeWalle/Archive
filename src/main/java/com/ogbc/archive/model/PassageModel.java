@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
 public class PassageModel
 {
     @NotBlank
+    @Size(max = 32)
     private String book;
 
     @NotNull

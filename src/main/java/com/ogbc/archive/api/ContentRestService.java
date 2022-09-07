@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class ContentRestService
     ContentBusinessService service;
 
     @GetMapping("/topic/{topic}")
-    public ResponseEntity<RestDto> handleGetByTopic(@PathVariable("topic") @LettersAndSpaces String topic)
+    public ResponseEntity<RestDto> handleGetByTopic(@PathVariable("topic") @Size(max = 128) @LettersAndSpaces String topic)
     {
         List<ContentModel> content = service.retrieveByTopic(new TopicModel(topic));
 
@@ -35,7 +36,7 @@ public class ContentRestService
     }
 
     @GetMapping("/passage")
-    public ResponseEntity<RestDto> handleGetByPassage(@RequestParam("book") @AlphaNumAndSpaces String book, @RequestParam("chapter") Integer chapter, @RequestParam(value = "verse", required = false) Integer verse)
+    public ResponseEntity<RestDto> handleGetByPassage(@RequestParam("book") @Size(max = 32) @AlphaNumAndSpaces String book, @RequestParam("chapter") Integer chapter, @RequestParam(value = "verse", required = false) Integer verse)
     {
         PassageModel passage = new PassageModel(book, chapter, verse);
 

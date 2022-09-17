@@ -9,10 +9,10 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = AlphaNumAndSpacesValidator.class)
-public @interface AlphaNumAndSpaces
+@Constraint(validatedBy = VerseValidator.class)
+public @interface Verse
 {
-    String message() default "A path variable or parameter included in the request can only contains letters, numbers, and spaces";
+    String message() default "Invalid verse (must be between 1-176 inclusive)";
 
     Class<?>[] groups() default {};
 

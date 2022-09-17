@@ -9,10 +9,10 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = LettersAndSpacesValidator.class)
-public @interface LettersAndSpaces
+@Constraint(validatedBy = ChapterValidator.class)
+public @interface Chapter
 {
-    String message() default "A path variable or parameter included in the request can only contains letters and spaces";
+    String message() default "Invalid chapter (must be between 1-150 inclusive)";
 
     Class<?>[] groups() default {};
 

@@ -30,4 +30,3 @@ jobs:
             environment_name: Archive-env
             version_label: latest
             region: us-west-1
-            deployment_package: Dockerrun.aws.json

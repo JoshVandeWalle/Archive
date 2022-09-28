@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.validation.ConstraintViolationException;
 
+/**
+ * This class handles all cross-cutting errors
+ */
 @ControllerAdvice
 public class GlobalErrorHandler
 {

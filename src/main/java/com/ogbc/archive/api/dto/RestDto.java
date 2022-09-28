@@ -6,6 +6,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * This class is the vehicle of HTTP communication
+ * @param <T> The object model returned with the response
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

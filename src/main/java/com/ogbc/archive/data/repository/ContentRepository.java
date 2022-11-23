@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ContentRepository extends JpaRepository<ContentEntity, Long>
 {
-    @Query(value="SELECT DISTINCT CONTENT.* FROM CONTENT JOIN CONTENT_TOPIC ON CONTENT.id = CONTENT_TOPIC.content_id JOIN TOPIC ON CONTENT_TOPIC.topic_id = TOPIC.id where TOPIC.topic LIKE CONCAT('%', :name, '%');", nativeQuery = true)
+    @Query(value="SELECT DISTINCT CONTENT.* FROM CONTENT JOIN CONTENT_TOPIC ON CONTENT.id = CONTENT_TOPIC.content_id JOIN TOPIC ON CONTENT_TOPIC.topic_id = TOPIC.id where TOPIC.name LIKE CONCAT('%', :name, '%');", nativeQuery = true)
     List<ContentEntity> findByTopic(String name);
     @Query(value= """
             SELECT * from CONTENT WHERE passage LIKE CONCAT('%', :book, '%') AND

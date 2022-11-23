@@ -17,7 +17,6 @@ public class TopicEntity
     @GeneratedValue
     private Long id;
 
-    @Column(name="topic")
     @NonNull
     private String name;
 

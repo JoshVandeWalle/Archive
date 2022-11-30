@@ -1,8 +1,8 @@
 package com.ogbc.archive.api.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.ogbc.archive.model.ContentModel;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.*;
 
 import java.util.List;
 
@@ -12,9 +12,12 @@ import java.util.List;
  */
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class RestDto<T>
 {
+    @Schema(description = "Response data", implementation = ContentModel.class)
     public List<T> data;
+    @Schema(description = "Response message")
     public String message;
 }

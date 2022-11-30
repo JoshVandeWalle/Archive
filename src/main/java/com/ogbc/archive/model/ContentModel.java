@@ -2,6 +2,7 @@ package com.ogbc.archive.model;
 
 import com.ogbc.archive.data.entity.ContentEntity;
 import com.ogbc.archive.data.entity.TopicEntity;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import org.hibernate.validator.constraints.URL;
 
@@ -14,40 +15,50 @@ import java.util.List;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class ContentModel
 {
+    @Schema(description = "Content ID", example = "37")
     private Long id;
 
     @NonNull
+    @Schema(description = "Date when sermon or other content was presented", example = "2022-11-27")
     private LocalDate date;
 
     @NonNull
     @NotBlank
     @Size(max = 64)
+    @Schema(description = "Reference of Bible passage covered", example = "John 3:16")
     private String passage;
 
     @NonNull
     @NotBlank
     @Size(max = 128)
+    @Schema(description = "Title of message or other content", example = "God Sends His Son")
     private String title;
 
     @NonNull
     @Size(max = 256)
+    @Schema(description = "Name of the speaker", example = "Mike Van De Walle")
     private String speaker;
 
     @NonNull
     @Size(max = 256)
+    @Schema(description = "Place where sermon or other content was presented", example = "Oak Grove Baptist Church")
     private String venue;
 
     @Size(max = 10000)
+    @Schema(description = "Notes on the sermon or other content")
     private String notes;
 
     @NonNull
     @URL
     @Size(max = 512)
+    @Schema(description = "Hyperlink to a video recording, audio-only recording, or readout of sermon or other content as appropriate", example = "https://www.youtube.com/watch?v=skUP9O2OGIo&t=17s")
     private String link;
 
+    @Schema(description = "List of Topics covered in sermon or other content")
     List<TopicModel> topics;
 
     public ContentModel(ContentEntity entity)

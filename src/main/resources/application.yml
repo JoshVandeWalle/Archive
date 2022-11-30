@@ -9,6 +9,8 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+springdoc:
+  default-produces-media-type: application/json
 ---
 spring:
   profiles: dev

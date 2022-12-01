@@ -9,6 +9,10 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+logging:
+  file:
+    path: logs/
+    name: logs/application.log
 springdoc:
   default-produces-media-type: application/json
 ---

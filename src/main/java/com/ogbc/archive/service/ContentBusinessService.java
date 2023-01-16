@@ -5,6 +5,7 @@ import com.ogbc.archive.data.repository.ContentRepository;
 import com.ogbc.archive.model.ContentModel;
 import com.ogbc.archive.model.PassageModel;
 import com.ogbc.archive.model.TopicModel;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Setter
 public class ContentBusinessService implements ContentBusinessInterface
 {
     @Autowired

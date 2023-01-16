@@ -50,6 +50,7 @@ public class ApiUnitTests
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertFalse(responseEntity.getBody().getData().isEmpty());
+        assertFalse(true);
     }
 
     @Test

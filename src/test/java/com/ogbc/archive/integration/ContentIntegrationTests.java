@@ -35,6 +35,7 @@ public class ContentIntegrationTests
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertTrue(response.getBody().getData().size() > 0);
+        assertTrue(false);
     }
 
     @Test

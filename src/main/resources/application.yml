@@ -9,6 +9,12 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  security:
+    ouath2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://api.asgardeo.io/t/jvdw/oauth2/token
+          jwk-set-uri: https://api.asgardeo.io/t/jvdw/oauth2/jwks
 logging:
   file:
     path: logs/

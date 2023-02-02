@@ -16,8 +16,11 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -30,6 +33,27 @@ public class ContentRestService
 {
     @Autowired
     ContentBusinessService service;
+
+    @PostMapping("/store")
+    @Operation(summary = "Store content in the archive", description = "adds a single content item to the archive", tags = { "content" })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "CREATED",
+                    content = @Content(schema = @Schema(implementation = String.class))),
+            @ApiResponse(responseCode = "400", description = "Invalid content provided",
+                    content = @Content(schema = @Schema(implementation = String.class))),
+            @ApiResponse(responseCode = "500", description = "Internal error",
+                    content = @Content(schema = @Schema(implementation = RestDto.class)))
+    })
+    public ResponseEntity<RestDto<ContentModel>> handleStoreContent(@Valid @RequestBody ContentModel content, BindingResult bindingResult)
+    {
+        if (bindingResult.hasErrors())
+        {
+            return new ResponseEntity<>(new RestDto<>(null, "Invalid content provided"), HttpStatus.BAD_REQUEST);
+        }
+
+        service.store(content);
+        return new ResponseEntity<>(new RestDto<>(null, "Operation Successful"), HttpStatus.CREATED);
+    }
 
     @GetMapping("/topic/{topic}")
     @Operation(summary = "Find content by topic", description = "Finds content by a topic covered in that content", tags = { "content" })

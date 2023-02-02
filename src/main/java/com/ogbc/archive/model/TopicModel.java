@@ -6,8 +6,7 @@ import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +17,8 @@ import java.util.List;
 @Setter
 public class TopicModel
 {
+    @NotNull
+    @Min(1)
     @Schema(description = "Topic ID number", example = "37")
     Long id;
 

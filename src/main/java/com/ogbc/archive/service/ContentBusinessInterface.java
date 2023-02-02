@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface ContentBusinessInterface
 {
+    ContentActionOutcome store(ContentModel content);
     List<ContentModel> retrieveByTopic(TopicModel topic);
     List<ContentModel> retrieveByPassage(PassageModel passage);
     List<ContentModel> retrieveRecent();

@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
-@RequiredArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
@@ -22,7 +21,6 @@ public class ContentModel
     @Schema(description = "Content ID", example = "37")
     private Long id;
 
-    @NonNull
     @Schema(description = "Date when sermon or other content was presented", example = "2022-11-27")
     private LocalDate date;
 
@@ -38,21 +36,18 @@ public class ContentModel
     @Schema(description = "Title of message or other content", example = "God Sends His Son")
     private String title;
 
-    @NonNull
     @Size(max = 256)
     @Schema(description = "Name of the speaker", example = "Mike Van De Walle")
     private String speaker;
 
-    @NonNull
     @Size(max = 256)
     @Schema(description = "Place where sermon or other content was presented", example = "Oak Grove Baptist Church")
     private String venue;
 
-    @Size(max = 10000)
+    @Size(max = 1028)
     @Schema(description = "Notes on the sermon or other content")
     private String notes;
 
-    @NonNull
     @URL
     @Size(max = 512)
     @Schema(description = "Hyperlink to a video recording, audio-only recording, or readout of sermon or other content as appropriate", example = "https://www.youtube.com/watch?v=skUP9O2OGIo&t=17s")

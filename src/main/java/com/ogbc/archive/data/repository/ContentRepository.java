@@ -4,9 +4,11 @@ import com.ogbc.archive.data.entity.ContentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface ContentRepository extends JpaRepository<ContentEntity, Long>
 {
     @Query(value="SELECT DISTINCT CONTENT.* FROM CONTENT JOIN CONTENT_TOPIC ON CONTENT.id = CONTENT_TOPIC.content_id JOIN TOPIC ON CONTENT_TOPIC.topic_id = TOPIC.id where TOPIC.name LIKE CONCAT('%', :name, '%');", nativeQuery = true)

@@ -14,7 +14,7 @@ import java.util.List;
 public class TopicEntity
 {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NonNull

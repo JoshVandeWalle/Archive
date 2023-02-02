@@ -33,7 +33,7 @@ public class ServiceUnitTests
         // mock repository
         repository = Mockito.mock(ContentRepository.class);
         // attach mocked repository to service
-        service.setRepository(repository);
+        service.setContentRepository(repository);
     }
 
     @Test

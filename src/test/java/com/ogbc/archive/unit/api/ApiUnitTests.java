@@ -5,13 +5,16 @@ import com.ogbc.archive.api.dto.RestDto;
 import com.ogbc.archive.model.ContentModel;
 import com.ogbc.archive.model.PassageModel;
 import com.ogbc.archive.model.TopicModel;
+import com.ogbc.archive.service.ContentActionOutcome;
 import com.ogbc.archive.service.ContentBusinessService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +28,8 @@ public class ApiUnitTests
 
     ContentBusinessService businessService;
 
+    BindingResult bindingResult;
+
     /**
      * This method runs before the test suite
      */
@@ -35,8 +40,42 @@ public class ApiUnitTests
         restService = new ContentRestService();
         // mock business logic
         businessService = Mockito.mock(ContentBusinessService.class);
+
+        bindingResult = Mockito.mock(BindingResult.class);
         // attach mocked business logic service to the REST service being tested
         restService.setService(businessService);
+    }
+
+    @Test
+    public void storeContentWithValidContent()
+    {
+        List<TopicModel> topics = new ArrayList<>();
+        topics.add(new TopicModel("Salvation"));
+        topics.add(new TopicModel("New topic"));
+        ContentModel content = new ContentModel(null, LocalDate.now(), "John 3:16", "God shows His love", "Mike Van de Walle", "Oak Grove Baptist Church", null, "https://google.com", topics);
+
+        when(bindingResult.hasErrors()).thenReturn(false);
+        when(businessService.store(any(ContentModel.class))).thenReturn(ContentActionOutcome.STORED);
+
+        ResponseEntity<RestDto<ContentModel>> responseEntity = restService.handleStoreContent(content, bindingResult);
+
+        assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
+    }
+
+    @Test
+    public void storeContentWithInvalidContent()
+    {
+        List<TopicModel> topics = new ArrayList<>();
+        topics.add(new TopicModel("Salvation"));
+        topics.add(new TopicModel("New topic"));
+        ContentModel content = new ContentModel(null, LocalDate.now(), "John 300:16", "God shows His love", "Mike Van de Walle", "Oak Grove Baptist Church", null, "https://google.com", topics);
+
+        when(bindingResult.hasErrors()).thenReturn(true);
+        when(businessService.store(any(ContentModel.class))).thenReturn(ContentActionOutcome.STORED);
+
+        ResponseEntity<RestDto<ContentModel>> responseEntity = restService.handleStoreContent(content, bindingResult);
+
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
     }
 
     @Test

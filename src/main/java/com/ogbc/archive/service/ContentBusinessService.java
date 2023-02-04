@@ -26,7 +26,7 @@ public class ContentBusinessService implements ContentBusinessInterface
     TopicRepository topicRepository;
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public ContentActionOutcome store(ContentModel content)
     {
         List<TopicEntity> topicEntities = new ArrayList<>();

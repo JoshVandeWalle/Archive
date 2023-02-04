@@ -17,8 +17,6 @@ import java.util.List;
 @Setter
 public class TopicModel
 {
-    @NotNull
-    @Min(1)
     @Schema(description = "Topic ID number", example = "37")
     Long id;
 

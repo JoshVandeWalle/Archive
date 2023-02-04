@@ -1,12 +1,18 @@
 package com.ogbc.archive.integration;
 
 import com.ogbc.archive.api.dto.RestDto;
+import com.ogbc.archive.model.ContentModel;
+import com.ogbc.archive.model.TopicModel;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.test.context.ActiveProfiles;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,6 +29,24 @@ public class ContentIntegrationTests
 
     // The HTTP header to send with requests
     HttpHeaders headers = new HttpHeaders();
+
+    @Test
+    public void storeContentWithoutToken()
+    {
+        List<TopicModel> topics = new ArrayList<>();
+        topics.add(new TopicModel("Salvation"));
+        topics.add(new TopicModel("New topic"));
+        ContentModel content = new ContentModel(null, LocalDate.now(), "John 3:16", "God shows His love", "Mike Van de Walle", "Oak Grove Baptist Church", null, "https://google.com", topics);
+
+        // instantiate an HttpEntity to send with request
+        HttpEntity<ContentModel> entity = new HttpEntity<ContentModel>(content, headers);
+        // send request and capture response
+        ResponseEntity<RestDto> response = restTemplate.exchange(
+                createURLWithPort("/content/store"), HttpMethod.POST, entity, RestDto.class);
+
+        assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+        assertNull(response.getBody());
+    }
 
     @Test
     public void retrieveByTopicWithValidTopicThatExists()

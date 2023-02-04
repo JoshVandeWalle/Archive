@@ -24,6 +24,6 @@ public class GlobalErrorHandler
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity handleConstraintViolationException()
     {
-        return new ResponseEntity<>(new RestDto(null, "Invalid path variable(s) or request parameter(s) provided"), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new RestDto(null, "Invalid path variable(s), request parameter(s), or request body provided"), HttpStatus.BAD_REQUEST);
     }
 }

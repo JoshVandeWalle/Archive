@@ -31,7 +31,7 @@ public class ContentIntegrationTests
     HttpHeaders headers = new HttpHeaders();
 
     @Test
-    public void storeContentWithoutToken()
+    public void storeContentWithoutAuthorization()
     {
         List<TopicModel> topics = new ArrayList<>();
         topics.add(new TopicModel("Salvation"));

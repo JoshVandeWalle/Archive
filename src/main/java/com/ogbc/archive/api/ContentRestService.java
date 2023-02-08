@@ -37,10 +37,12 @@ public class ContentRestService
     @PostMapping("/store")
     @Operation(summary = "Store content in the archive", description = "adds a single content item to the archive", tags = { "content" })
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "CREATED",
+            @ApiResponse(responseCode = "201", description = "Content stored",
                     content = @Content(schema = @Schema(implementation = String.class))),
             @ApiResponse(responseCode = "400", description = "Invalid content provided",
                     content = @Content(schema = @Schema(implementation = String.class))),
+            @ApiResponse(responseCode = "401", description = "Unauthorized request",
+                    content = @Content(schema = @Schema)),
             @ApiResponse(responseCode = "500", description = "Internal error",
                     content = @Content(schema = @Schema(implementation = RestDto.class)))
     })

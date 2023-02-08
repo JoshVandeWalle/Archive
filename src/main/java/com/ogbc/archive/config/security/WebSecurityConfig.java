@@ -11,7 +11,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig
 {
     @Bean
-    protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
+    protected SecurityFilterChain configure(HttpSecurity http) throws Exception
+    {
         return http
                 .cors()
                 .and()

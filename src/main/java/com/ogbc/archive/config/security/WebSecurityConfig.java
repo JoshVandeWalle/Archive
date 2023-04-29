@@ -21,7 +21,7 @@ public class WebSecurityConfig
                 .and()
                 .authorizeHttpRequests(configurer ->
                         configurer
-                                .antMatchers("/", "/content", "/content/topic/**", "/content/passage/**")
+                                .antMatchers("/", "/content", "/content/topic/**", "/content/passage/**", "/swagger-ui/**")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()

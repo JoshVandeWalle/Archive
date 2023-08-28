@@ -3,7 +3,7 @@ package com.ogbc.archive.data.entity;
 import com.ogbc.archive.model.TopicModel;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity(name="TOPIC")

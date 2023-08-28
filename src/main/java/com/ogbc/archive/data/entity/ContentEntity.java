@@ -4,7 +4,7 @@ import com.ogbc.archive.model.ContentModel;
 import com.ogbc.archive.model.TopicModel;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

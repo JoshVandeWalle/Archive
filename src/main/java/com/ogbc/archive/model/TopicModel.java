@@ -4,7 +4,7 @@ import com.ogbc.archive.data.entity.TopicEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
-import javax.validation.constraints.*;
+import jakarta.validation.constraints.*;
 import java.util.List;
 
 @NoArgsConstructor

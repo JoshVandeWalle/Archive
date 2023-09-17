@@ -1,6 +1,5 @@
 package com.ogbc.archive.unit.service;
 
-import com.ogbc.archive.data.entity.ContentEntity;
 import com.ogbc.archive.data.repository.ContentRepository;
 import com.ogbc.archive.data.repository.TopicRepository;
 import com.ogbc.archive.model.ContentModel;

@@ -27,6 +27,6 @@ jobs:
             aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
             aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             application_name: archive
-            environment_name: Archive-env
+            environment_name: Archive-env-2024
             version_label: latest
             region: us-west-1

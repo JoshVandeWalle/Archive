@@ -1,4 +1,4 @@
-package com.ogbc.archive.model;
+package com.ogbc.archive.api.model;
 
 import com.ogbc.archive.data.entity.TopicEntity;
 import io.swagger.v3.oas.annotations.media.Schema;

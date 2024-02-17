@@ -2,9 +2,9 @@ package com.ogbc.archive.unit.service;
 
 import com.ogbc.archive.data.repository.ContentRepository;
 import com.ogbc.archive.data.repository.TopicRepository;
-import com.ogbc.archive.model.ContentModel;
-import com.ogbc.archive.model.PassageModel;
-import com.ogbc.archive.model.TopicModel;
+import com.ogbc.archive.api.model.ContentModel;
+import com.ogbc.archive.api.model.PassageModel;
+import com.ogbc.archive.api.model.TopicModel;
 import com.ogbc.archive.service.ContentActionOutcome;
 import com.ogbc.archive.service.ContentBusinessService;
 import org.junit.jupiter.api.BeforeEach;

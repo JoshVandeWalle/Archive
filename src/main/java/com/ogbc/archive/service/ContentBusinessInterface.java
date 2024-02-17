@@ -1,8 +1,8 @@
 package com.ogbc.archive.service;
 
-import com.ogbc.archive.model.ContentModel;
-import com.ogbc.archive.model.PassageModel;
-import com.ogbc.archive.model.TopicModel;
+import com.ogbc.archive.api.model.ContentModel;
+import com.ogbc.archive.api.model.PassageModel;
+import com.ogbc.archive.api.model.TopicModel;
 
 import java.util.List;
 

@@ -2,9 +2,9 @@ package com.ogbc.archive.api;
 
 import com.ogbc.archive.api.dto.RestDto;
 import com.ogbc.archive.api.validator.*;
-import com.ogbc.archive.model.ContentModel;
-import com.ogbc.archive.model.TopicModel;
-import com.ogbc.archive.model.PassageModel;
+import com.ogbc.archive.api.model.ContentModel;
+import com.ogbc.archive.api.model.TopicModel;
+import com.ogbc.archive.api.model.PassageModel;
 import com.ogbc.archive.service.ContentBusinessService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

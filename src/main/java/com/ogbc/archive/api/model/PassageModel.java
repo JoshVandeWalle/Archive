@@ -1,4 +1,4 @@
-package com.ogbc.archive.model;
+package com.ogbc.archive.api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

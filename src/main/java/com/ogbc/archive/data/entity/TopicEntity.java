@@ -1,6 +1,6 @@
 package com.ogbc.archive.data.entity;
 
-import com.ogbc.archive.model.TopicModel;
+import com.ogbc.archive.api.model.TopicModel;
 import lombok.*;
 
 import jakarta.persistence.*;

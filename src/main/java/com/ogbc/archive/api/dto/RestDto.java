@@ -1,6 +1,6 @@
 package com.ogbc.archive.api.dto;
 
-import com.ogbc.archive.model.ContentModel;
+import com.ogbc.archive.api.model.ContentModel;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 

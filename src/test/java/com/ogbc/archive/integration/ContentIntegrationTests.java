@@ -1,8 +1,8 @@
 package com.ogbc.archive.integration;
 
 import com.ogbc.archive.api.dto.RestDto;
-import com.ogbc.archive.model.ContentModel;
-import com.ogbc.archive.model.TopicModel;
+import com.ogbc.archive.api.model.ContentModel;
+import com.ogbc.archive.api.model.TopicModel;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;

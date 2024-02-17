@@ -1,4 +1,4 @@
-package com.ogbc.archive.model;
+package com.ogbc.archive.api.model;
 
 import com.ogbc.archive.data.entity.ContentEntity;
 import com.ogbc.archive.data.entity.TopicEntity;

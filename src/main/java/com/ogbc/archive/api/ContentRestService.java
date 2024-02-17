@@ -5,6 +5,7 @@ import com.ogbc.archive.api.validator.*;
 import com.ogbc.archive.api.model.ContentModel;
 import com.ogbc.archive.api.model.TopicModel;
 import com.ogbc.archive.api.model.PassageModel;
+import com.ogbc.archive.service.ContentBusinessInterface;
 import com.ogbc.archive.service.ContentBusinessService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -31,7 +32,7 @@ import java.util.List;
 public class ContentRestService
 {
     @Autowired
-    ContentBusinessService service;
+    ContentBusinessInterface service;
 
     @PostMapping("/store")
     @Operation(summary = "Store content in the archive", description = "adds a single content item to the archive", tags = { "content" })

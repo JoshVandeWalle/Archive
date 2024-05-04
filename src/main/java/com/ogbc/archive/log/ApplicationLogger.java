@@ -82,7 +82,7 @@ public class ApplicationLogger
     {
         // read method signature for inclusion in logs
         String signature = joinPoint.getSignature().toString();
-        //log the exception
+        //log exception
         log.error("Exiting " + signature.substring(signature.indexOf(" ") + 1) + " with exception of type: " + e.getClass() + " and message: " + e.getMessage());
     }
 }

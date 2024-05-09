@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class ContentRestService
     ContentBusinessInterface service;
 
     @PostMapping("/store")
-    @Operation(summary = "Store content in the archive", description = "adds a single content item to the archive", tags = { "content" })
+    @Operation(summary = "Store content in the archive", description = "adds a single content item to the archive", tags = { "content" }, security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Content stored",
                     content = @Content(schema = @Schema(implementation = String.class))),

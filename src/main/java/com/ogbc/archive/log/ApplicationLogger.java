@@ -80,7 +80,7 @@ public class ApplicationLogger
     @AfterThrowing(value = "execution(* com.ogbc.archive.api.*.*(..)) || execution(* com.ogbc.archive.service.*.*(..)) || execution(* com.ogbc.archive.data.repository.*.*(..))", throwing = "e")
     public void afterThrowing(JoinPoint joinPoint, Exception e)
     {
-        // read method signature for inclusion in logs
+        // store method signature for inclusion in logs
         String signature = joinPoint.getSignature().toString();
         //log exception
         log.error("Exiting " + signature.substring(signature.indexOf(" ") + 1) + " with exception of type: " + e.getClass() + " and message: " + e.getMessage());

@@ -1,4 +1,4 @@
-package com.ogbc.archive.config.security;
+package com.ogbc.archive.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;

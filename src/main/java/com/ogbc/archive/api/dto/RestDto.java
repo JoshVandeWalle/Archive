@@ -7,7 +7,7 @@ import lombok.*;
 import java.util.List;
 
 /**
- * This class is the vehicle of HTTP REST communication
+ * This class is the vehicle of HTTP(s) REST communication
  * @param <T> The object model type returned with the response
  */
 @NoArgsConstructor

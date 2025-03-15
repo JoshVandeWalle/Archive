@@ -13,6 +13,7 @@ public interface ContentRepository extends JpaRepository<ContentEntity, Long>
 {
     @Query(value="SELECT DISTINCT CONTENT.* FROM CONTENT JOIN CONTENT_TOPIC ON CONTENT.id = CONTENT_TOPIC.content_id JOIN TOPIC ON CONTENT_TOPIC.topic_id = TOPIC.id where TOPIC.name LIKE CONCAT('%', :name, '%');", nativeQuery = true)
     List<ContentEntity> findByTopic(String name);
+
     @Query(value= """
             SELECT * from CONTENT WHERE passage LIKE CONCAT('%', :book, '%') AND
            ((CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(passage, ':', 1), ' ', -1) AS UNSIGNED) = :chapter) OR
@@ -21,6 +22,7 @@ public interface ContentRepository extends JpaRepository<ContentEntity, Long>
            CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(passage, ':', 1), ' ', -1) AS UNSIGNED) <= :chapter AND
            CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(passage, ':', 2), '-', -1) AS UNSIGNED) >= :chapter));""", nativeQuery = true)
     List<ContentEntity> findByChapter(@Param("book") String book, @Param("chapter") String chapter);
+
     @Query(value= """
             SELECT * from CONTENT WHERE passage LIKE CONCAT('%', :book, '%') AND
             ((passage NOT LIKE '%:%' AND SUBSTRING_INDEX(passage, ' ', -1) = :chapter) OR
@@ -36,6 +38,7 @@ public interface ContentRepository extends JpaRepository<ContentEntity, Long>
             LENGTH(passage) - LENGTH(REPLACE(passage, ':', '')) = 2 AND SUBSTRING_INDEX(SUBSTRING_INDEX(passage, ':', 2), '-', -1) = :chapter AND
             \tSUBSTRING_INDEX(passage, ':', -1) >= :verse)""", nativeQuery = true)
     List<ContentEntity> findByVerse(@Param("book") String book, @Param("chapter") String chapter,  @Param("verse") String verse);
+
     @Query(value = "SELECT * FROM CONTENT ORDER BY `date` DESC LIMIT 10", nativeQuery = true)
     List<ContentEntity> findRecent();
 }
